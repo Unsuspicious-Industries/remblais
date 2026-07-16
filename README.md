@@ -52,13 +52,15 @@ An OT coupling says how much mass should move between every pair of pixels. It d
 
 For each color channel, it computes the entropic unbalanced transport plan
 
-$$
-P^* = \mathop{\arg\min}_{P \geq 0}
-\lambda\langle C,P\rangle
-+ \varepsilon\!\sum_{ij} P_{ij}(\log P_{ij}-1)
-+ \rho\,\mathrm{KL}(P\mathbf{1}\,\|\,b)
-+ \rho\,\mathrm{KL}(P^\top\mathbf{1}\,\|\,a),
-$$
+```math
+\begin{aligned}
+P^\star = \underset{P \geq 0}{\operatorname{arg\,min}} \quad
+& \lambda \langle C, P \rangle
++ \varepsilon \sum_{ij} P_{ij}(\log P_{ij} - 1) \\
+& + \rho\,\mathrm{KL}(P\mathbf{1} \mathbin\| b)
++ \rho\,\mathrm{KL}(P^\top\mathbf{1} \mathbin\| a).
+\end{aligned}
+```
 
 where $C_{ij}$ is Manhattan distance on the image grid. A log-domain generalized Sinkhorn iteration runs in tinygrad.
 
