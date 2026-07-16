@@ -54,7 +54,7 @@ For each color channel, it computes the entropic unbalanced transport plan
 
 ```math
 \begin{aligned}
-P^\star = \underset{P \geq 0}{\operatorname{arg\,min}} \quad
+P^\star = \underset{P \geq 0}{\arg\min} \quad
 & \lambda \langle C, P \rangle
 + \varepsilon \sum_{ij} P_{ij}(\log P_{ij} - 1) \\
 & + \rho\,\mathrm{KL}(P\mathbf{1} \mathbin\| b)
