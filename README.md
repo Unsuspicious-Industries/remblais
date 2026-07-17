@@ -2,7 +2,7 @@
 
 # REMBLAIS
 
-**Do not cross-fade the pixels. Move the mass.**
+Mass conserving image morphing.
 
 <img src="morph_big.gif" width="560" alt="A white block transported into three colored blocks" />
 
@@ -12,11 +12,12 @@
 
 </div>
 
-Remblais turns an optimal transport plan into an image morph. Brightness is mass. Pixels are sites. Color moves through the grid instead of dissolving through a cross-fade.
+Remblais turns an optimal transport plan into an image morph. Brightness is modelled as mass, and colors flow through the optimal path across the screen.
 
-In earthworks, *remblai* is the material placed to fill a void. This experiment applies the same cut-and-fill view to images.
+>  « Lorsqu’on doit transporter des terres d’un lieu dans un autre, on a coutume de donner le nom de Déblai au volume des terres que l’on doit transporter, et le nom de Remblai à l’espace qu’elles doivent occuper après le transport. Le prix du transport d’une molécule étant, toutes choses d’ailleurs égales, proportionnel à son poids et à l’espace qu’on lui fait parcourir, et par conséquent le produit du transport total devant être proportionnel à la somme des produits des molécules [sic [3]] multipliées par l’espace parcouru, il s’ensuit que le déblai et le remblai étant donnés de figure et de position, il n’est pas indifférent que telle molécule du déblai soit transportée dans tel ou tel autre endroit du remblai, mais qu’il y a une certaine distribution à faire des molécules du premier dans le second, d’après laquelle la somme de ces produits sera la moindre possible, et le prix du transport total sera un minimum. […] C’est la solution de cette question que je me propose de donner ici ».
+-- *Mémoire sur la théorie des déblais et des remblais*, Gaspard Monge
 
-## Run it
+## Running
 
 Directly from GitHub:
 
@@ -48,7 +49,7 @@ The [Colab notebook](https://colab.research.google.com/github/Unsuspicious-Indus
 
 ## The idea
 
-An OT coupling says how much mass should move between every pair of pixels. It does not say how that movement should unfold in time. Remblais supplies that missing dynamics.
+An OT coupling says how much mass should move between every pair of pixels. It does not say how that movement should unfold in time. Remblais supplies that missing dynamics and computes the actual paths.
 
 For each color channel, it computes the entropic unbalanced transport plan
 
@@ -95,6 +96,8 @@ uv run remblais morph --help
 ## Scope
 
 Remblais is a small experiment, not a production image model. Inputs are uint8 RGB images and channels are transported independently. The dense plan scales as $O((HW)^2)$. Downsample first, then upscale the animation if needed.
+
+The next step in the work will be scaling to usable sizes on usable timeframes.
 
 ## Development
 

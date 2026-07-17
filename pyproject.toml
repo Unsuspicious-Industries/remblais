@@ -4,7 +4,8 @@ version = "0.1.0"
 description = "Local image morphing from entropic optimal transport plans"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Paul Kronlund-Drouault" }]
 dependencies = [
   "imageio>=2.37",
@@ -27,11 +28,12 @@ dev = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/remblais"]
+[tool.setuptools]
+packages = ["remblais"]
+package-dir = { remblais = "src" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -42,3 +44,6 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["remblais"]
